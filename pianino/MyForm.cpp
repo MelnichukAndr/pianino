@@ -15,315 +15,182 @@ void main(array<String^>^ args) {
 
 
 
-
 System::Void pianino::MyForm::radioButton1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
 {
       
- 
-        int ch;
+         int ch;
+         
         FILE* f;
-        fopen_s(&f, "score.txt", "w");
-        fseek(f, 0, SEEK_END);
-
-            do
-            {
-                if (e->KeyCode == Keys::Q)
-                {
-                    Do->BackColor = Color::DarkGray;
-                    Do->PerformClick();
-                    Do->BackColor = Color::White;
+        fopen_s(&f, "score.txt", "a");
 
 
-                    ch = 1;
-                    fprintf(f, "%d", ch);
-                    continue;
-
-                }
-                else if (e->KeyCode == Keys::W) {
-                    Re->BackColor = Color::DarkGray;
-                    Re->PerformClick();
-                    Re->BackColor = Color::White;
-
-                    ch = 2;
-                    fprintf(f, "%d", ch);
-                    break;
-
-                }
-                else if (e->KeyCode == Keys::E) {
-                    Mi->BackColor = Color::DarkGray;
-                    Mi->PerformClick();
-                    Mi->BackColor = Color::White;
-
-                    ch = 3;
-                    fprintf(f, "%d", ch);
-                    break;
-
-
-                }
-                else if (e->KeyCode == Keys::R) {
-                    FA->BackColor = Color::DarkGray;
-                    FA->PerformClick();
-                    FA->BackColor = Color::White;
-
-                    ch = 4;
-                    fprintf(f, "%d", ch);
-                    break;
-
-
-                }
-                else if (e->KeyCode == Keys::T) {
-                    So->BackColor = Color::DarkGray;
-                    So->PerformClick();
-                    So->BackColor = Color::White;
-
-                    ch = 5;
-                    fprintf(f, "%d", ch);
-                    break;
-
-
-                }
-                else if (e->KeyCode == Keys::Y) {
-                    La->BackColor = Color::DarkGray;
-                    La->PerformClick();
-                    La->BackColor = Color::White;
-
-                    ch = 6;
-                    fprintf(f, "%d", ch);
-                    break;
-
-
-                }
-                else if (e->KeyCode == Keys::U) {
-                    Si->BackColor = Color::DarkGray;
-                    Si->PerformClick();
-                    Si->BackColor = Color::White;
-
-                    ch = 7;
-                    fprintf(f, "%d", ch);
-                    break;
-
-                }
-                else if (e->KeyCode == Keys::S)
-
-                    break;
-
-
-            } while (e->KeyCode != Keys::S);
-          
-        fclose(f);
      
+
+            switch (e->KeyCode)
+            {
+            case (Keys::Q): {
+
+                Do->BackColor = Color::DarkGray;
+                Do->PerformClick();
+                Do->BackColor = Color::White;
+
+               
+                 ch = 1;
+                fprintf(f, "%d ", ch);
+                
+
+
+            }
+                          break;
+            case (Keys::W): {
+                Re->BackColor = Color::DarkGray;
+                Re->PerformClick();
+                Re->BackColor = Color::White;
+
+                ch = 2;
+                fprintf(f, "%d ", ch);
+
+
+            }
+                          break;
+            case (Keys::E): {
+                Mi->BackColor = Color::DarkGray;
+                Mi->PerformClick();
+                Mi->BackColor = Color::White;
+
+                ch = 3;
+                fprintf(f, "%d ", ch);
+
+
+            }
+                          break;
+            case (Keys::R): {
+                FA->BackColor = Color::DarkGray;
+                FA->PerformClick();
+                FA->BackColor = Color::White;
+
+                ch = 4;
+                fprintf(f, "%d ", ch);
+
+
+            }
+            case (Keys::T): {
+                So->BackColor = Color::DarkGray;
+                So->PerformClick();
+                So->BackColor = Color::White;
+
+                ch = 5;
+                fprintf(f, "%d ", ch);
+
+            }
+                          break;
+            case(Keys::Y): {
+                La->BackColor = Color::DarkGray;
+                La->PerformClick();
+                La->BackColor = Color::White;
+
+                ch = 6;
+                fprintf(f, "%d ", ch);
+
+            }
+                         break;
+            case (Keys::U): {
+                Si->BackColor = Color::DarkGray;
+                Si->PerformClick();
+                Si->BackColor = Color::White;
+
+                ch= 7;
+                fprintf(f, "%d ", ch);
+
+            }
+            
+            }
+            
+            fclose(f);
 }
+     
+
 System::Void pianino::MyForm::reproduction_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
 {
-        int str = 0;
-        int k = 0;
+       
         FILE* f;
-        char fname[] = "score.txt";
-        fopen_s(&f, fname, "r");
+        fopen_s(&f, "score.txt", "rt");
+        int a;
         while (!feof(f))
         {
-            str=fgetc(f);
-            k++;
+            a++;
         }
-        while (k==0)
+
+          
+        
+        int* mas= new int[a];
+        for (int i = 0; i < a; i++)
         {
-            k--;
-            str;
-            if (str == 1)
+            fscanf(f, "%d", &*(mas + i));
+        }
+        fclose(f);
+
+        for (int i = 0; i < a; i++)
+        {
+            if (*(mas + i) == 1)
             {
                 Do->BackColor = Color::DarkGray;
                 Do->PerformClick();
                 Do->BackColor = Color::White;
-                
+
             }
-            else if (str == 2) {
+            else if (*(mas + i) == 2) {
                 Re->BackColor = Color::DarkGray;
                 Re->PerformClick();
                 Re->BackColor = Color::White;
-              
-    
+
+
             }
-            else if (str == 3) {
+            else if (*(mas + i) == 3) {
                 Mi->BackColor = Color::DarkGray;
                 Mi->PerformClick();
                 Mi->BackColor = Color::White;
-             
-    
+
+
             }
-            else if (str == 4) {
+            else if (*(mas + i) == 4) {
                 FA->BackColor = Color::DarkGray;
                 FA->PerformClick();
                 FA->BackColor = Color::White;
-         
-    
+
+
             }
-            else if (str == 5) {
+            else if (*(mas + i) == 5) {
                 So->BackColor = Color::DarkGray;
                 So->PerformClick();
                 So->BackColor = Color::White;
-                
-              
-    
-    
+
+
+
+
             }
-            else if (str == 6) {
+            else if (*(mas + i) == 6) {
                 La->BackColor = Color::DarkGray;
                 La->PerformClick();
                 La->BackColor = Color::White;
-                
-               
-    
-    
+
+
+
+
             }
-            else if (str == 7) {
+            else if (*(mas + i) == 7) {
                 Si->BackColor = Color::DarkGray;
                 Si->PerformClick();
                 Si->BackColor = Color::White;
-                
-                
-    
+
+
+
             }
         }
-        fclose(f);
+        delete(mas);
+        
 }
 
-//System::Void pianino::MyForm::radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
-//{
-//    const int k = 160;
-//    char str[k];
-//    FILE* f;
-//    char fname[] = "score.txt";
-//    fopen_s(&f, fname, "r");
-//    while (!feof(f))
-//    {
-//        str[k]=fgetc(f);
-//    }
-//    while (*str != '\0')
-//    {
-//        str;
-//        if (str == "-1")
-//        {
-//            Do->BackColor = Color::DarkGray;
-//            Do->PerformClick();
-//            Do->BackColor = Color::White;
-//            
-//        }
-//        else if (str == "W") {
-//            Re->BackColor = Color::DarkGray;
-//            Re->PerformClick();
-//            Re->BackColor = Color::White;
-//          
-//
-//        }
-//        else if (str == "E") {
-//            Mi->BackColor = Color::DarkGray;
-//            Mi->PerformClick();
-//            Mi->BackColor = Color::White;
-//         
-//
-//        }
-//        else if (str == "R") {
-//            FA->BackColor = Color::DarkGray;
-//            FA->PerformClick();
-//            FA->BackColor = Color::White;
-//     
-//
-//        }
-//        else if (str == "T") {
-//            So->BackColor = Color::DarkGray;
-//            So->PerformClick();
-//            So->BackColor = Color::White;
-//            
-//          
-//
-//
-//        }
-//        else if (str == "Y") {
-//            La->BackColor = Color::DarkGray;
-//            La->PerformClick();
-//            La->BackColor = Color::White;
-//            
-//           
-//
-//
-//        }
-//        else if (str == "U") {
-//            Si->BackColor = Color::DarkGray;
-//            Si->PerformClick();
-//            Si->BackColor = Color::White;
-//            
-//            
-//
-//        }
-//    }
-//    fclose(f);
-//}
-//System::Void pianino::MyForm::Its_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
-//{
-//    char ch;
-//    FILE* f;
-//    fopen_s(&f, "score.txt", "w");
-//    if (e->KeyCode == Keys::Q)
-//    {
-//        Do->BackColor = Color::DarkGray;
-//        Do->PerformClick();
-//        Do->BackColor = Color::White;
-//        ch = 1;
-//        fprintf(f,"&d",ch);
-//    }
-//    else if (e->KeyCode == Keys::W) {
-//        Re->BackColor = Color::DarkGray;
-//        Re->PerformClick();
-//        Re->BackColor = Color::White;
-//        ch = 2;
-//        fprintf(f, "&d", ch);
-//
-//    }
-//    else if (e->KeyCode == Keys::E) {
-//        Mi->BackColor = Color::DarkGray;
-//        Mi->PerformClick();
-//        Mi->BackColor = Color::White;
-//        ch = 3;
-//        fprintf(f, "&d", ch);
-//
-//    }
-//    else if (e->KeyCode == Keys::R) {
-//        FA->BackColor = Color::DarkGray;
-//        FA->PerformClick();
-//        FA->BackColor = Color::White;
-//        ch = 4;
-//        fprintf(f, "&d", ch);
-//
-//    }
-//    else if (e->KeyCode == Keys::T) {
-//        So->BackColor = Color::DarkGray;
-//        So->PerformClick();
-//        So->BackColor = Color::White;
-//        ch = 5;
-//        fprintf(f, "&d", ch);
-//
-//
-//    }
-//    else if (e->KeyCode == Keys::Y) {
-//          La->BackColor = Color::DarkGray;
-//        La->PerformClick();
-//        La->BackColor = Color::White;
-//        ch = 6;
-//        fprintf(f, "&d", ch);
-//
-//
-//    }
-//    else if (e->KeyCode == Keys::U) {
-//        Si->BackColor = Color::DarkGray;
-//        Si->PerformClick();
-//        Si->BackColor = Color::White;
-//        ch = 7;
-//        fprintf(f, "&d", ch);
-//
-//    }
-//    fclose(f);
-// 
-//}
 
 //System::Void pianino::MyForm::MyForm_KeyDown_1(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
 //{
@@ -647,17 +514,3 @@ System::Void pianino::MyForm::Grasshopper_CheckedChanged(System::Object^ sender,
 
 }
 
-//System::Void pianino::MyForm::Its_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-//    int a;
-//    MessageBox::Show("Воспроизвести вашу мелодию нажмите-1.Создать вашу мелодию-2. Выйти-3");
-//    if (a == 1)
-//        fopen_s(&f, "score.txt", "r");
-//    else
-//        if (a == 2)
-//            fopen_s(&f, "score.txt", "w");
-//        else
-//            if (a == 3)
-//                break;
-//    
-//
-//}

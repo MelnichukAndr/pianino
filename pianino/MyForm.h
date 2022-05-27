@@ -213,24 +213,20 @@ namespace pianino {
 			// 
 			// radioButton1
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(875, 38);
+			this->radioButton1->Location = System::Drawing::Point(875, 35);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(70, 21);
-			this->radioButton1->TabIndex = 11;
-			this->radioButton1->Text = L"record";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->radioButton1->Size = System::Drawing::Size(74, 24);
+			this->radioButton1->TabIndex = 1;
+			this->radioButton1->Text = L"reset";
 			this->radioButton1->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::radioButton1_KeyDown);
 			// 
 			// reproduction
 			// 
-			this->reproduction->AutoSize = true;
-			this->reproduction->Location = System::Drawing::Point(951, 38);
+			this->reproduction->Location = System::Drawing::Point(942, 36);
 			this->reproduction->Name = L"reproduction";
-			this->reproduction->Size = System::Drawing::Size(109, 21);
-			this->reproduction->TabIndex = 12;
+			this->reproduction->Size = System::Drawing::Size(104, 24);
+			this->reproduction->TabIndex = 0;
 			this->reproduction->Text = L"reproduction";
-			this->reproduction->UseVisualStyleBackColor = true;
 			this->reproduction->CheckedChanged += gcnew System::EventHandler(this, &MyForm::reproduction_CheckedChanged);
 			// 
 			// MyForm
@@ -262,7 +258,6 @@ namespace pianino {
 #pragma endregion
 
 
-	//private: void vuzov(FILE* f);
 	private: System::Void Do_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Re_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Mi_Click(System::Object^ sender, System::EventArgs^ e);
