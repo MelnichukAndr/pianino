@@ -116,11 +116,11 @@ System::Void pianino::MyForm::reproduction_CheckedChanged(System::Object^ sender
         FILE* f;
         fopen_s(&f, "score.txt", "rt");
         int a;
-        while (!feof(f))
+       /* while (!feof(f))
         {
             a++;
-        }
-
+        }*/
+        a = 30;
           
         
         int* mas= new int[a];
