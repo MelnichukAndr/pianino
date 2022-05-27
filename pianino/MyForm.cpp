@@ -5,7 +5,7 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 using namespace pianino; // Название проекта
-
+FILE* f;
 void main(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
@@ -20,7 +20,7 @@ System::Void pianino::MyForm::radioButton1_KeyDown(System::Object^ sender, Syste
       
          int ch;
          
-        FILE* f;
+       
         fopen_s(&f, "score.txt", "a");
 
 
@@ -110,10 +110,16 @@ System::Void pianino::MyForm::radioButton1_KeyDown(System::Object^ sender, Syste
 }
      
 
+System::Void  pianino::MyForm::radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+    
+    fopen_s(&f, "score.txt", "w");
+    fclose(f);
+}
+
 System::Void pianino::MyForm::reproduction_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
 {
        
-        FILE* f;
+      
         fopen_s(&f, "score.txt", "rt");
         int a;
        /* while (!feof(f))
@@ -192,56 +198,56 @@ System::Void pianino::MyForm::reproduction_CheckedChanged(System::Object^ sender
 }
 
 
-//System::Void pianino::MyForm::MyForm_KeyDown_1(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
-//{
-//    if (e->KeyCode == Keys::Q)
-//    {
-//        Do->BackColor = Color::DarkGray;
-//        Do->PerformClick();
-//        Do->BackColor = Color::White;
-//    }
-//    else if (e->KeyCode == Keys::W) {
-//        Re->BackColor = Color::DarkGray;
-//        Re->PerformClick();
-//        Re->BackColor = Color::White;
-//
-//    }
-//    else if (e->KeyCode == Keys::E) {
-//        Mi->BackColor = Color::DarkGray;
-//        Mi->PerformClick();
-//        Mi->BackColor = Color::White;
-//
-//    }
-//    else if (e->KeyCode == Keys::R) {
-//        FA->BackColor = Color::DarkGray;
-//        FA->PerformClick();
-//        FA->BackColor = Color::White;
-//
-//    }
-//    else if (e->KeyCode == Keys::T) {
-//        So->BackColor = Color::DarkGray;
-//        So->PerformClick();
-//        So->BackColor = Color::White;
-//
-//
-//    }
-//    else if (e->KeyCode == Keys::Y) {
-//
-//        La->BackColor = Color::DarkGray;
-//        La->PerformClick();
-//        La->BackColor = Color::White;
-//
-//
-//    }
-//    else if (e->KeyCode == Keys::U) {
-//
-//        Si->BackColor = Color::DarkGray;
-//        Si->PerformClick();
-//        Si->BackColor = Color::White;
-//
-//    }
-//
-//}
+System::Void pianino::MyForm::radioButton2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
+{
+    if (e->KeyCode == Keys::Q)
+    {
+        Do->BackColor = Color::DarkGray;
+        Do->PerformClick();
+        Do->BackColor = Color::White;
+    }
+    else if (e->KeyCode == Keys::W) {
+        Re->BackColor = Color::DarkGray;
+        Re->PerformClick();
+        Re->BackColor = Color::White;
+
+    }
+    else if (e->KeyCode == Keys::E) {
+        Mi->BackColor = Color::DarkGray;
+        Mi->PerformClick();
+        Mi->BackColor = Color::White;
+
+    }
+    else if (e->KeyCode == Keys::R) {
+        FA->BackColor = Color::DarkGray;
+        FA->PerformClick();
+        FA->BackColor = Color::White;
+
+    }
+    else if (e->KeyCode == Keys::T) {
+        So->BackColor = Color::DarkGray;
+        So->PerformClick();
+        So->BackColor = Color::White;
+
+
+    }
+    else if (e->KeyCode == Keys::Y) {
+
+        La->BackColor = Color::DarkGray;
+        La->PerformClick();
+        La->BackColor = Color::White;
+
+
+    }
+    else if (e->KeyCode == Keys::U) {
+
+        Si->BackColor = Color::DarkGray;
+        Si->PerformClick();
+        Si->BackColor = Color::White;
+
+    }
+
+}
 
 System::Void pianino::MyForm::Do_Click(System::Object^ sender, System::EventArgs^ e) {
 

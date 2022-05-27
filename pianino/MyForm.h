@@ -50,6 +50,8 @@ namespace pianino {
 	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
 	private: System::Windows::Forms::RadioButton^ reproduction;
+	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::RadioButton^ radioButton3;
 
 
 
@@ -92,6 +94,8 @@ namespace pianino {
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->reproduction = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -229,11 +233,38 @@ namespace pianino {
 			this->reproduction->Text = L"reproduction";
 			this->reproduction->CheckedChanged += gcnew System::EventHandler(this, &MyForm::reproduction_CheckedChanged);
 			// 
+			// radioButton2
+			// 
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->Checked = true;
+			this->radioButton2->Location = System::Drawing::Point(958, 591);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(88, 21);
+			this->radioButton2->TabIndex = 11;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->Text = L"keyboard";
+			this->radioButton2->UseVisualStyleBackColor = true;
+			this->radioButton2->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::radioButton2_KeyDown);
+			// 
+			// radioButton3
+			// 
+			this->radioButton3->AutoSize = true;
+			this->radioButton3->Location = System::Drawing::Point(1060, 591);
+			this->radioButton3->Name = L"radioButton3";
+			this->radioButton3->Size = System::Drawing::Size(62, 21);
+			this->radioButton3->TabIndex = 12;
+			this->radioButton3->TabStop = true;
+			this->radioButton3->Text = L"Clear";
+			this->radioButton3->UseVisualStyleBackColor = true;
+			this->radioButton3->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton3_CheckedChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1134, 624);
+			this->Controls->Add(this->radioButton3);
+			this->Controls->Add(this->radioButton2);
 			this->Controls->Add(this->reproduction);
 			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->Grasshopper);
@@ -250,6 +281,7 @@ namespace pianino {
 			this->KeyPreview = true;
 			this->Name = L"MyForm";
 			this->Text = L"Pianino";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -272,5 +304,10 @@ namespace pianino {
 
 private: System::Void radioButton1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 private: System::Void reproduction_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
+
+private: System::Void radioButton2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
+private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
